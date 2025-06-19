@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Turno Confirmado</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    
+
+</head>
+<body>
+    <div>
+        <!-- Loader inicial -->
+        <div id="loader-container">
+            <div class="loader"></div>
+            <p>Estamos generando tu turno...</p>
+        </div>
+
+      <div id="contenido-final">
+        <div class="confirmacion-card">
+            <div class="card-superior">
+                <h1>¡Gracias, {{ empresa }}!</h1>
+                <p>Tu número de turno para la feria AVEM 2025 es:</p>
+            </div>
+            <div class="card-inferior">
+                <h2 class="turno-animado" id="turno-numero">#{{ turno }}</h2>
+            </div>
+         </div>
+
+
+        <!-- Texto y botón fuera de la tarjeta -->
+        <div class="confirmacion-extra">
+            <p>Revisa tu correo electrónico para más detalles.</p>
+            <a href="{{ url_for('index') }}" class="enlace-retorno">Volver al formulario</a>
+        </div>
+      </div>
+
+
+    </div>
+
+    <script>
+        // Al terminar el loader, mostrar contenido y activar animación
+        setTimeout(() => {
+            const loader = document.getElementById("loader-container");
+            const final = document.getElementById("contenido-final");
+            const turno = document.getElementById("turno-numero");
+
+            loader.style.display = "none";
+            final.style.visibility = "visible";
+
+            setTimeout(() => {
+                turno.classList.add("mostrar");
+            }, 50);
+        }, 3000);
+    </script>
+</body>
+</html>

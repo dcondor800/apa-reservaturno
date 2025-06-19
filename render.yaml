@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: turno-avem
+    runtime: python
+    buildCommand: ""
+    startCommand: python turno.py
+    envVars:
+      - key: FLASK_ENV
+        value: production
+    plan: starter  # ← cambia 'free' por 'starter' o 'professional'
