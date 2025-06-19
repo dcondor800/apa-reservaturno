@@ -176,6 +176,10 @@ h1{
     body {
         padding: 0;
         flex-direction: column;
+        background-image: url('../static/fondo-mobile.png');
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
     }
 
     .formulario {
