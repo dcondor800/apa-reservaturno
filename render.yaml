@@ -3,8 +3,8 @@ services:
     name: turno-avem
     runtime: python
     buildCommand: ""
-    startCommand: python turno.py
+    startCommand: gunicorn turno:app
     envVars:
       - key: FLASK_ENV
         value: production
-    plan: starter  # ← cambia 'free' por 'starter' o 'professional'
+    plan: professional
