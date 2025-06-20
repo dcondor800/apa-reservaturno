@@ -171,6 +171,18 @@ def generar_turno():
 
     return render_template('confirmacion.html', turno=nuevo_turno, nombre=nombre)
 
+    @app.route('/reiniciar-turnos')
+    @autenticar
+    def reiniciar_turnos():
+        try:
+            with open(CSV_FILE, 'w', newline='', encoding='utf-8') as f:
+                writer = csv.writer(f)
+                writer.writerow(['Turno', 'Nombre', 'Empresa', 'Email', 'Celular', 'País', 'Hora'])
+            return "turnos.csv ha sido reiniciado (solo encabezados conservados)."
+        except Exception as e:
+            return f"Error al reiniciar el archivo: {e}", 500
+
+
 
 if __name__ == '__main__':
     app.run(debug=True, port=5001)
