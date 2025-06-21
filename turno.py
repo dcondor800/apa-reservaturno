@@ -119,38 +119,54 @@ def generar_turno():
         writer = csv.writer(f)
         writer.writerow([nuevo_turno, nombre, empresa, email, celular, pais, hora])
 
-    # Enviar correo
+    # Enviar email de confirmación
     try:
         msg = Message(
-            subject=f"Turno asignado para AVEM 2025: #{nuevo_turno}",
+            subject=f"🎫 Registro AVEM 2025 – Turno Nº{nuevo_turno}",
             sender=("RESERVAS APA", app.config['MAIL_USERNAME']),
             recipients=[email]
         )
+
         msg.html = f"""
         <html>
         <body style="font-family: Arial, sans-serif; font-size: 15px; color: #333;">
-            <p>Estimado equipo de <strong>{empresa}</strong>,</p>
-            <p>Gracias por registrarse para participar en la feria <strong>AVEM 2025</strong>.</p>
-            <p><strong>Su número de turno asignado es: #{nuevo_turno}</strong></p>
-            <p>Resumen de datos ingresados:</p>
-            <ul>
-                <li>📌 <strong>Empresa:</strong> {empresa}</li>
-                <li>📧 <strong>Email de contacto:</strong> {email}</li>
-                <li>📱 <strong>Celular:</strong> {celular}</li>
-                <li>🌎 <strong>País:</strong> {pais}</li>
-                <li>📅 <strong>Fecha de registro:</strong> {hora}</li>
-            </ul>
-            <p>Conserven este número, ya que será requerido para seleccionar su stand.</p>
-            <p>¡Nos vemos en AVEM 2025!</p>
+            <p>¡Gracias por tu interés en formar parte del <strong>Congreso de Avicultura AVEM 2025</strong>!</p>
+
+            <p>Hemos recibido tu registro exitosamente y este es tu número de atención:</p>
+
+            <h2 style="font-size: 28px; color: #005baa; margin: 15px 0;">Nº{nuevo_turno}</h2>
+
+            <p>Con este número podrás ser atendido el día de nuestro aniversario, <strong>jueves 26 de junio</strong>, en nuestro módulo.</p>
+
+            <h3 style="margin-top: 25px;">¿Cómo funciona?</h3>
+
+            <ol>
+                <li><strong>Proyección del número:</strong> El día del evento, proyectaremos tu número en una pantalla. Tendrás <strong>2 minutos</strong> para acercarte al módulo antes de llamar al siguiente número.</li>
+                <li><strong>Selección del stand:</strong> Podrás escoger tu espacio en AVEM 2025, de acuerdo al plano proyectado.</li>
+                <li><strong>Confirmación inmediata:</strong> Recibirás un correo con la confirmación formal de tu reserva.</li>
+                <li><strong>Proceso de compra:</strong> A partir del lunes 30 de junio, nos comunicaremos contigo para enviarte el contrato y finalizar tu participación.</li>
+            </ol>
+
+            <p style="color: #a00;"><strong>Importante:</strong> Este registro no asegura tu espacio en el AVEM 2025 hasta que completes el proceso de atención presencial durante el evento.</p>
+
+            <p style="margin-top: 20px;">¡Te esperamos puntualmente para vivir juntos el lanzamiento del AVEM 2025!</p>
+
+            <p style="margin-top: 30px;">Atentamente,<br><strong>ASOCIACIÓN PERUANA DE AVICULTURA</strong></p>
+
             <br>
-            <img src="cid:footer_img" style="max-width: 600px; width: 100%; margin-top: 20px;" alt="Footer AVEM">
+            <img src="cid:footer_img" style="max-width: 600px; width: 100%; margin-top: 30px;" alt="Footer AVEM" />
         </body>
         </html>
         """
+
+        # Embebido de imagen al final (footer)
         ruta_footer = os.path.join(app.root_path, 'static', 'footer-apa.png')
         if os.path.exists(ruta_footer):
             with open(ruta_footer, 'rb') as f:
                 img_data = f.read()
+                img = MIMEImage(img_data, _subtype='png')
+                img.add_header('Content-ID', '<footer_img>')
+                img.add_header('Content-Disposition', 'inline', filename='footer-apa.png')
                 msg.attach(
                     filename='footer-apa.png',
                     content_type='image/png',
@@ -158,7 +174,9 @@ def generar_turno():
                     disposition='inline',
                     headers={'Content-ID': '<footer_img>'}
                 )
+
         mail.send(msg)
+
     except Exception as e:
         print("Error al enviar correo:", e)
 
