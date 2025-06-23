@@ -145,7 +145,7 @@ def generar_turno():
 
             <h3 style="color: #2a3082; margin-top: 30px;">¿Cómo funciona?</h3>
 
-            <ol style="padding-left: 20px; color: #2a3082;">
+            <ol style="padding-left: 20px; color: #2a3082; list-style-type: none;">
                 <li style="margin-bottom: 10px;">
                     1️⃣ El día del evento, <strong>proyectaremos tu número de atención en una pantalla, para que te acerques a nuestro módulo</strong>.
                     Tendrás 2 minutos como máximo para acercarte al módulo, antes de llamar al siguiente número.
