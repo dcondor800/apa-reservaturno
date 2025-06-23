@@ -129,32 +129,47 @@ def generar_turno():
 
         msg.html = f"""
         <html>
-        <body style="font-family: Arial, sans-serif; font-size: 15px; color: #333;">
-            <p>¡Gracias por tu interés en formar parte del <strong>Congreso de Avicultura AVEM 2025</strong>!</p>
+        <body style="font-family: Arial, sans-serif; font-size: 15px; color: #2a3082; line-height: 1.6;">
+
+            <p>¡Gracias por tu interés en formar parte del 
+            <strong style="color: #d71920;">Congreso de Avicultura AVEM 2025</strong>!</p>
 
             <p>Hemos recibido tu registro exitosamente y este es tu número de atención:</p>
 
-            <h2 style="font-size: 28px; color: #005baa; margin: 15px 0;">Nº{nuevo_turno}</h2>
+            <h2 style="font-size: 34px; color: #2a3082; margin: 10px 0;">
+                Nº{nuevo_turno}
+            </h2>
 
-            <p>Con este número podrás ser atendido el día de nuestro aniversario, <strong>jueves 26 de junio</strong>, en nuestro módulo.</p>
+            <p>Con este número podrás ser atendido el día de nuestro aniversario, 
+            <strong style="color: #d71920;">jueves 26 de junio</strong>, en nuestro módulo.</p>
 
-            <h3 style="margin-top: 25px;">¿Cómo funciona?</h3>
+            <h3 style="color: #2a3082; margin-top: 30px;">¿Cómo funciona?</h3>
 
-            <ol>
-                <li><strong>Proyección del número:</strong> El día del evento, proyectaremos tu número en una pantalla. Tendrás <strong>2 minutos</strong> para acercarte al módulo antes de llamar al siguiente número.</li>
-                <li><strong>Selección del stand:</strong> Podrás escoger tu espacio en AVEM 2025, de acuerdo al plano proyectado.</li>
-                <li><strong>Confirmación inmediata:</strong> Recibirás un correo con la confirmación formal de tu reserva.</li>
-                <li><strong>Proceso de compra:</strong> A partir del lunes 30 de junio, nos comunicaremos contigo para enviarte el contrato y finalizar tu participación.</li>
+            <ol style="padding-left: 20px; color: #2a3082;">
+                <li style="margin-bottom: 10px;">
+                    1️⃣ El día del evento, <strong>proyectaremos tu número de atención en una pantalla, para que te acerques a nuestro módulo</strong>.
+                    Tendrás 2 minutos como máximo para acercarte al módulo, antes de llamar al siguiente número.
+                </li>
+                <li style="margin-bottom: 10px;">
+                    2️⃣ <strong>Podrás escoger tu espacio en el AVEM 2025</strong>, de acuerdo al plano que proyectaremos.
+                </li>
+                <li style="margin-bottom: 10px;">
+                    3️⃣ <strong>Recibirás una confirmación formal de tu compra</strong>, vía correo, al momento.
+                </li>
+                <li style="margin-bottom: 10px;">
+                    4️⃣ <strong>A partir del lunes 30 de junio, nos comunicaremos contigo para concluir el proceso de compra</strong>,
+                    enviándote el contrato por tu participación en el congreso.
+                </li>
             </ol>
 
-            <p style="color: #a00;"><strong>Importante:</strong> Este registro no asegura tu espacio en el AVEM 2025 hasta que completes el proceso de atención presencial durante el evento.</p>
+            <p><strong>Importante:</strong> Este registro no asegura tu espacio en el AVEM 2025,
+            hasta que completes el proceso de atención presencial durante el evento.</p>
 
-            <p style="margin-top: 20px;">¡Te esperamos puntualmente para vivir juntos el lanzamiento del AVEM 2025!</p>
-
-            <p style="margin-top: 30px;">Atentamente,<br><strong>ASOCIACIÓN PERUANA DE AVICULTURA</strong></p>
+            <br><strong>ASOCIACIÓN PERUANA DE AVICULTURA</strong>
 
             <br>
             <img src="cid:footer_img" style="max-width: 600px; width: 100%; margin-top: 30px;" alt="Footer AVEM" />
+
         </body>
         </html>
         """
